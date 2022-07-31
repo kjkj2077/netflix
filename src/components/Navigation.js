@@ -5,7 +5,7 @@ export const Navigation = () => {
   return (
     <Navbar bg="dark" variant='dark' expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#" style={{color:"red"}}>
+        <Navbar.Brand href="/" style={{color:"red"}}>
           {/* <img width={75}src='https://content.surfit.io/thumbs/image/wJW2K/w4VbJ/10552564055eb8333117a06.png/cover-center-2x.webp'/> */}
           KOFLIX
         </Navbar.Brand>

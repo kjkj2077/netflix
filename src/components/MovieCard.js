@@ -3,20 +3,16 @@ import { Badge } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-
 export const MovieCard = ({ item }) => {
     // const { genreList } =useSelector((state)=>state.movie.genreList) //앞에 genreList언급했으니 뒤에 필요x
     const { genreList } =useSelector((state)=>state.movie)
     const url2=`https://image.tmdb.org/t/p/original///${item.poster_path}`
-    //https://image.tmdb.org/t/p/original///kAVRgw7GgK1CfYEJq8ME6EvRIgU.jpg
-
     const navigate =useNavigate()
     const showDetail=()=>{
         navigate(`/movies/${item.id}`)
-
     }
     return (   
-        <div className="card"style={{backgroundColor:"black"}} onClick={showDetail} item={item}>
+        <div className="card" style={{backgroundColor:"black"}} onClick={showDetail} item={item}>
             <img className="card_img"src={url2}/>
                 <div className='overlay'>
                     <div>

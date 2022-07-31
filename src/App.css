@@ -2,10 +2,11 @@
   background-color: black ;
   font-family: "Montserrat", helvetica, arial, sans-serif;
   color: white;
-  
+  padding-bottom: 10px;
 }
 .movie-list{
-  padding-left: 20px;
+  padding-left: 8px;
+
 }
 /* nav */
 .nav-item{
@@ -31,7 +32,7 @@
 /* banner */
 /* card */
 .card{
-  width: 200px;
+  width: 180px;
   height: 100px;
 }
 .card_img{
@@ -62,7 +63,72 @@
   opacity: 0.9;
 }
 /* card */
+
+
+/* Detail */
+.Detail_Row1{
+  margin-bottom: 100px;
+}
 .Detail_img{
-  height: 600px;
-  width: 430px;
+  height: 700px;
+  width: 500px;
+  /* height: 400px;
+  width: 300px; */
+  margin-left: 50px;
+  margin-top: 18px;
+  border: 1px rgb(23, 23, 23) solid;
+}
+.Detail_info{
+  margin-right: 50px;
+}
+.Detail{
+  padding-top: 80px;
+}
+.Detail_title{
+  font-size: 60px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Detail_tagline{
+  margin-top: 30px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.imdb  {
+  width: 32px;
+  height:18px;
+  margin-right: 5px;
+  margin-bottom: 3px;
+}
+.people{
+  width: 29px;
+  height: 28px;
+  margin-right: 5px;
+  margin-left: 20px;
+  margin-bottom: 3px;
+}
+.Detail_badge{
+  margin-top: 10px;
+  margin-right: 5px;
+  width: 100px;
+}
+.Detail_Button{
+  margin-left: 50px;
+  margin-bottom: 30px;
+}
+.Detail_Button1{
+  margin-right: 15px;
+}
+.Detail_review{
+  margin-left: 50px;
+  margin-right: 50px;
+  border: 3px solid white;
+  padding: 30px;
+  font-size: 15px;
+  
+}
+hr {
+  width: 100%;
+  height: 3px;
+  background-color: white;
 }

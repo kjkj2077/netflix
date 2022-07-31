@@ -6,6 +6,7 @@ import { MovieSlide } from '../components/MovieSlide'
 import { ClipLoader } from 'react-spinners'
 
 
+
 export const Home = () => {
     const dispatch = useDispatch()
     const { popularMovies, topRatedMovies, upcomingMovies, loading } = useSelector(state => state.movie)
