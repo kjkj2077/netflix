@@ -1,38 +1,68 @@
-.App {
-  text-align: center;
+.app{
+  background-color: black ;
+  font-family: "Montserrat", helvetica, arial, sans-serif;
+  color: white;
+  
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.movie-list{
+  padding-left: 20px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* nav */
+.nav-item{
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* nav */
+/* banner */
+.banner{
+  height: 400px;
+  width: auto;
+  display: flex; 
+  align-items: center; /* 세로정렬 */
+  background-size: cover;
+  background-position: center;
+}
+.banner-info{
+  width: 40%;
+  margin-left: 30px;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+/* banner */
+/* card */
+.card{
+  width: 200px;
+  height: 100px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card_img{
+  border-radius: 20px;
+  border: 1px rgb(35, 34, 34) solid;
+  
+}
+#card-badge{
+  margin-right: 3px;
+  margin: 20px;
+  border: 3px black solid;
+  background-color: red;
+  color: red;
+}
+.overlay  {
+  opacity: 0;
+  background: rgb(66, 64, 64);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 15px;
+  border-radius: 20px;
+}
+.card_over_18{
+  color: red;
+}
+.card:hover .overlay{
+  opacity: 0.9;
+}
+/* card */
+.Detail_img{
+  height: 600px;
+  width: 430px;
 }
