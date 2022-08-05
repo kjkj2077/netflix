@@ -3,6 +3,7 @@
   font-family: "Montserrat", helvetica, arial, sans-serif;
   color: white;
   padding-bottom: 10px;
+  
 }
 .movie-list{
   padding-left: 8px;
@@ -32,13 +33,15 @@
 /* banner */
 /* card */
 .card{
-  width: 180px;
-  height: 100px;
+  width: 220px;
+  height: 160px;
+  margin-left: 38px;
+  position: fixed;
+  
 }
 .card_img{
   border-radius: 20px;
   border: 1px rgb(35, 34, 34) solid;
-  
 }
 #card-badge{
   margin-right: 3px;
@@ -125,10 +128,35 @@
   border: 3px solid white;
   padding: 30px;
   font-size: 15px;
-  
 }
 hr {
   width: 100%;
   height: 3px;
   background-color: white;
 }
+/* Movies */
+.movie_container{
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.moive_card{
+  padding: 7px;
+}
+.pagination {
+  float: right;
+}
+.pagination a {
+  background-color: #550610;
+  width: 60px;
+  border-radius: 40px;
+  margin-left: 10px;
+  color: black;
+  float: left;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 10px;
+}
+/* Movies */
+

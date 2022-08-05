@@ -6,16 +6,15 @@ import { MovieSlide } from '../components/MovieSlide'
 import { ClipLoader } from 'react-spinners'
 
 
-
 export const Home = () => {
     const dispatch = useDispatch()
     const { popularMovies, topRatedMovies, upcomingMovies, loading } = useSelector(state => state.movie)
     //movie는 reducer/index에있음
-    console.log("home", popularMovies)
-
+  
     useEffect(() => {
         dispatch(movieAction.getMovies())
     }, [])
+    
     if (loading) {
         return <ClipLoader color='#ffff' loading={loading} size={150} />
     }
@@ -23,11 +22,11 @@ export const Home = () => {
         <div className='app'>
             {popularMovies.results && <Banner movie={popularMovies.results[0]} />}
             <div className='movie-list'>
-                <h1>Popular Movie</h1>
+                <h2>Popular Movie</h2>
                 <MovieSlide movies={popularMovies} />
-                <h1>Top rated Movie</h1>
+                <h2>Top rated Movie</h2>
                 <MovieSlide movies={topRatedMovies} />
-                <h1>upcoming Movie</h1>
+                <h2>Upcoming Movie</h2>
                 <MovieSlide movies={upcomingMovies} />
             </div>
         </div>

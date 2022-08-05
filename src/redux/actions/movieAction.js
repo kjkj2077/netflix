@@ -19,6 +19,7 @@ function getMovies() {
                          upComingApi,
                          genreApi,]) //동시에 부르기 각각 await하는것보다 효율적.
             console.log("promise all", popularMovies, topRatedMovies, upcomingMovies,genreList)
+            console.log("promise all3213", popularMovies, topRatedMovies, upcomingMovies,genreList)
             
             dispatch({
                 type: "GET_MOVIE",
@@ -29,17 +30,18 @@ function getMovies() {
                     genreList:genreList.data.genres
                 }
             })
-
         } catch (err) {
             dispatch({type:"GET_ERROR"})
-
         }
-
     }
 }
-export const movieAction = {
-    getMovies
+function Search(keyword){
+    return async (dispatch)=>{
+        dispatch({type:"SEARCH",payload:{keyword}})
+        console.log("search success")
+    }
 }
+export const movieAction = {getMovies,Search}
 //api호출방법 : fetch,ajax(제이쿼리),axios
 //axios를 더많이씀.
 //더많은 기능을 제공.

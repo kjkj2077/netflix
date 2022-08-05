@@ -3,7 +3,8 @@ let initialState = {
     topRatedMovies: {},
     upcomingMovies: {},
     loading:true,
-    genreList:[]
+    genreList:[],
+    search:""
 }
 
 function movieReducer(state = initialState, action) {
@@ -20,11 +21,11 @@ function movieReducer(state = initialState, action) {
                 loading:false
             }
         case "GET_ERROR":
-            return{
-                ...state,loading:false
-            }
-            default:
-                return{...state}
+            return{...state,loading:false}
+        case "SEARCH":
+            return{...state,search:action.payload.keyword,}
+        default:
+            return{...state}
     }
 }
 

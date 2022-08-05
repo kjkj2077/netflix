@@ -1,13 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { Navbar,Container,Form,Button,Nav} from 'react-bootstrap';
+import { Navbar, Container, Form, Button, Nav } from 'react-bootstrap';
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch, useSelector } from 'react-redux';
+import { movieAction } from '../redux/actions/movieAction';
 export const Navigation = () => {
+  
+  const dispatch =useDispatch();
+  const [keyword,setKeyword] = useState("")
+  
+  const Search =(e) =>{
+    e.preventDefault(); //form쓰면 이걸 꼭사용 -> 리프레쉬 안됨.
+    dispatch(movieAction.getMovies(keyword))
+    console.log("keywordㅇㅇ",keyword)
+  }
+
+
   return (
     <Navbar bg="dark" variant='dark' expand="lg">
       <Container fluid>
-        <Navbar.Brand href="/" style={{color:"red"}}>
-          {/* <img width={75}src='https://content.surfit.io/thumbs/image/wJW2K/w4VbJ/10552564055eb8333117a06.png/cover-center-2x.webp'/> */}
-          KOFLIX
+        <Navbar.Brand href="/" style={{ color: "red" }}>
+          JJAPFLIX
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -19,14 +33,17 @@ export const Navigation = () => {
             <Link to='/' className='nav-item'>Home</Link>
             <Link to='/movies' className='nav-item'>Movies</Link>
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={(e) => Search (e)} >
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onChange={(e) => setKeyword(e.target.value)}
             />
-            <Button variant="outline-danger">Search</Button>
+            <Button variant="outline-danger" onClick={Search } >
+            <FontAwesomeIcon icon={faSearch} className='search-icon' />
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>

@@ -7,6 +7,7 @@ export const MovieCard = ({ item }) => {
     // const { genreList } =useSelector((state)=>state.movie.genreList) //앞에 genreList언급했으니 뒤에 필요x
     const { genreList } =useSelector((state)=>state.movie)
     const url2=`https://image.tmdb.org/t/p/original///${item.poster_path}`
+    //
     const navigate =useNavigate()
     const showDetail=()=>{
         navigate(`/movies/${item.id}`)
