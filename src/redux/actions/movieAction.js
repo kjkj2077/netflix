@@ -35,13 +35,8 @@ function getMovies() {
         }
     }
 }
-function Search(keyword){
-    return async (dispatch)=>{
-        dispatch({type:"SEARCH",payload:{keyword}})
-        console.log("search success")
-    }
-}
-export const movieAction = {getMovies,Search}
+
+export const movieAction = {getMovies}
 //api호출방법 : fetch,ajax(제이쿼리),axios
 //axios를 더많이씀.
 //더많은 기능을 제공.

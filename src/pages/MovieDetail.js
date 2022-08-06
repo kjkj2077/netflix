@@ -5,6 +5,7 @@ import { Container, Row, Col, Button, Badge, CloseButton } from 'react-bootstrap
 import { MovieCard2 } from '../components/MovieCard2';
 import YouTube from 'react-youtube';
 import ReactModal from 'react-modal';
+import { useSelector } from 'react-redux';
 
 export const MovieDetail = () => {
   const customStyles = {
@@ -29,6 +30,7 @@ export const MovieDetail = () => {
   const closeModal = () => setIsOpen(false);
 
   const [reviewOrRelated, setReviewOrRelated] = useState(true)
+  const { genreList } = useSelector((state) => state.movie)
 
 
   const { id } = useParams()
@@ -57,12 +59,47 @@ export const MovieDetail = () => {
 
   return (
     <div className='app'>
-      <Container className='Detail'>
+      <Container>
+        <Row>
+          <Col lg={5} >
+            <Row>
+              <img className="Detail_img" src={url} />
+            </Row>
+            <Row>
+              {/* {something} */}
+            </Row>
+          </Col>
+          <Col>
+            <Row>
+              <Col lg={6}>
+                <h1 className='Detail_title'>{movieDetails?.title}</h1>
+                <h2 className='Detail_tagline'>{movieDetails?.tagline}</h2>
+                <span><img className="imdb" src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/575px-IMDB_Logo_2016.svg.png' />{movieDetails?.vote_average.toFixed(1)}</span>
+                <span><img className='people' src='https://cdn2.iconfinder.com/data/icons/people-groups/512/Leader_Avatar-512.png' />{movieDetails?.popularity}</span>
+                <hr />
+                <h5>{movieDetails?.overview}</h5>
+                <hr />
+                <Badge className='Detail_badge' bg="danger">Budget</Badge>${movieDetails?.budget}<br />
+                <Badge className='Detail_badge' bg="danger">Revenue</Badge>${movieDetails?.revenue}<br />
+                <Badge className='Detail_badge' bg="danger">Release Day</Badge>{movieDetails?.release_date}<br />
+                <Badge className='Detail_badge' bg="danger">Running Time</Badge>{movieDetails?.runtime}min<br /> <hr />
+                <Button variant='dark' onClick={openModal}> Watch Trailer</Button>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        
+        <Row>
+          
+        </Row>
+      </Container>
+      {/* <Container className='Detail'>
         <Row className='Detail_Row1'>
           <Col>
             <img className="Detail_img" src={url} />
           </Col>
           <Col className='Detail_info'>
+            
             <h1 className='Detail_title'>{movieDetails?.title}</h1>
             <h2 className='Detail_tagline'>{movieDetails?.tagline}</h2>
             <span><img className="imdb" src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/575px-IMDB_Logo_2016.svg.png' />{movieDetails?.vote_average.toFixed(1)}</span>
@@ -129,7 +166,7 @@ export const MovieDetail = () => {
             </Container>
         }
         
-      </Container>
+      </Container> */}
     </div>
   )
 }

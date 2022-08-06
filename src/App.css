@@ -1,13 +1,13 @@
 .app{
   background-color: black ;
-  font-family: "Montserrat", helvetica, arial, sans-serif;
+  /* font-family: "Montserrat", helvetica, arial, sans-serif; */
+  font-family: serif;
   color: white;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   
 }
 .movie-list{
   padding-left: 8px;
-
 }
 /* nav */
 .nav-item{
@@ -24,6 +24,7 @@
   align-items: center; /* 세로정렬 */
   background-size: cover;
   background-position: center;
+  box-shadow: 0px 0px 0.5rem #c80b34;
 }
 .banner-info{
   width: 40%;
@@ -67,7 +68,6 @@
 }
 /* card */
 
-
 /* Detail */
 .Detail_Row1{
   margin-bottom: 100px;
@@ -75,9 +75,10 @@
 .Detail_img{
   height: 700px;
   width: 500px;
-  /* height: 400px;
-  width: 300px; */
-  margin-left: 50px;
+  display: flex;
+  justify-content : center;
+
+  
   margin-top: 18px;
   border: 1px rgb(23, 23, 23) solid;
 }
@@ -134,6 +135,7 @@ hr {
   height: 3px;
   background-color: white;
 }
+/* Detail */
 /* Movies */
 .movie_container{
   padding-top: 30px;
@@ -142,21 +144,130 @@ hr {
 .moive_card{
   padding: 7px;
 }
+#movie_container_sort{
+  margin-top: 10px;
+}
+/* pagination  */
 .pagination {
-  float: right;
+  
 }
 .pagination a {
+  box-shadow: 0px 0px 0.5rem #c80b34;
   background-color: #550610;
-  width: 60px;
+  width: 37px;
+  height: 35px;
   border-radius: 40px;
-  margin-left: 10px;
+  margin-left: 15px;
   color: black;
   float: left;
-  padding: 5px 10px;
   text-decoration: none;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 15px;
+  background: linear-gradient(90deg, #0c0c0c, #54021d);
+  color: white;
+  padding-top: 1px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 /* Movies */
 
+/* MovieBigCard */
+.Movie_Big_Card{
+  height: 450px;
+  width: 300px;
+  display: flex; 
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  box-shadow: 0px 0px 1.3rem #c80b34;
+}
+.Movie_Big_Card_cover{
+  width: 300px;
+  background: linear-gradient(90deg, #010101,transparent);
+  border-radius: 30px;
+}
+.Movie_Big_Card_info{
+  margin-top: 30px;
+  margin-left: 15px;
+}
+.Movie_Big_Card_s_img{
+  width:55px;
+  height:80px;
+  box-shadow: 0px 0px 1.1rem #020202;
+}
+.Movie_Big_Card_title{
+  margin-left: 2px;
+  width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 20px;
+  white-space:pre-line;
+}
+.Movie_Big_Card_overview{
+  font-size: 13px;
+  width        : 150px;     /* 너비는 변경될수 있습니다. */
+  height:   140px;
+  text-overflow: ellipsis;  /* 위에 설정한 100px 보다 길면 말줄임표처럼 표시합니다. */
+  overflow     : hidden;    /* 내용이 길면 감춤니다 */
+  display      : block;     /* ie6이상 현재요소를 블럭처리합니다. */
+  margin-top: 10px;
+  word-break: break-word;
+}
+#Movie_Big_Card-badges{
+  margin-top: 15px;
+}
+#Movie_Big_Card-badge{
+  margin-right: 5px;
+  margin-top: 7px;
+}
+.Movie_Big_Card_icon{
+  margin-top: 20px;
+}
+  
+/* MovieBigCard */
+#dropdown-button-dark-example1{
+  width: 100%;
+  height: 50px;
+  color: white;
+  box-shadow: 0px 0px 1.3rem #c80b34;
+}
+#drop_item{ 
+  width: 100%;
+}
+#Detail_img{
+  
+  display: flex;
+  justify-content : center;
+}
+
+@media (max-width: 730px) {  /* 핸드폰*/
+  .card{ 
+    margin-left: 15px;
+  }
+  .Detail_img{
+    margin-top: 0px;
+    height: 420px;
+    width:300px;
+    text-align: center;
+    
+  }
+  .Detail_info{
+    width: 320px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .Detail_info{
+    margin-right: 0px;
+  }
+  .Detail{
+    padding-top: 30px;
+  }
+  .Movie_Big_Card{
+    width: 100%;
+  }
+  
+}
+@media (max-width: 1200px) { /* 태블릿*/
+  
+}

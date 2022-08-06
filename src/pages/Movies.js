@@ -1,62 +1,95 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import { MovieCard2 } from '../components/MovieCard2';
+import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import Pagination from 'react-js-pagination';
 import { useSelector } from 'react-redux';
 import { MoiveSort } from '../components/MoiveSort';
+import { MovieBigCard } from '../components/MovieBigCard';
+import { useSearchParams } from 'react-router-dom';
+import { searchAction } from '../redux/actions/searchAction';
+import { useDispatch } from 'react-redux';
 const API_KEY = process.env.REACT_APP_API_KEY
+
 export const Movies = () => {
   const [movieSearch, setMovieSearch] = useState("");
   const [page, setPage] = useState(1);
   const [sortType, setSortType] = useState('popularity.desc');
-  let keyword = useSelector((state) => state.movie.search)
-  
-  const handlePageChange = (page) => { setPage(page); };
+  const [query, setQuery] = useSearchParams();
+  const dispatch = useDispatch()
+  const { keyword } = useSelector((state) => state.search)
 
+  const handlePageChange = (page) => { setPage(page); };
+  const getSearch = () => {
+    let searchQuery = query.get("q") || "";
+    dispatch(searchAction.search(searchQuery))
+  }
   useEffect(() => {
     getMovieDetailsFromAPI(page)
-    console.log("movies keyword", keyword);
-  }, [page, keyword,sortType]);
-
+    getSearch()
+  }, [page, sortType, query]);
 
   async function getMovieDetailsFromAPI(page) {
     // let url2 = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`;
     let url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortType}&include_adult=true&include_video=false&page=${page}`
     let res = await axios.get(url);
+    console.log("res", res.data.results[1].title)
     setMovieSearch(res.data);
   }
+
+
   return (
     <div className='app'>
       <Container className='movie_container'>
         <Row>
-          <Col lg={3}>
+          <Col lg={3} id="movie_container_sort">
             <Row>
-              <MoiveSort setSortType={setSortType}/>
-            </Row><br/>
+              <MoiveSort setSortType={setSortType} />
+            </Row><br />
             <Row>
-              <Button onClick={()=>setSortType("popularity.asc")}> Popularity(ASC)</Button>
+              {/* <MoiveSort setSortType={setSortType} /> */}
             </Row>
           </Col>
           <Col>
             <Row>
-              {movieSearch && movieSearch.results.map((movie) => {
+              {/* {movieSearch && movieSearch.results.map((movie) => {
                 return (
-                  <Col lg={3} md={3} className="moive_card">
-                    < MovieCard2 className="Movies-card" movie={movie} />
+                  <Col lg={6} md={6} className="moive_card">
+                    < MovieBigCard className="Movies-card" movie={movie} />
                   </Col >
                 )
-              })}
+              })} */}
+              {
+                keyword == null || keyword == ''
+                  ? movieSearch && movieSearch.results.map((movie) => {
+                    return (
+                      <Col lg={6} md={6} className="moive_card">
+                        < MovieBigCard className="Movies-card" movie={movie} />
+                      </Col >
+                    )
+                  })
+                  :movieSearch && movieSearch.results.map((movie) => {
+                    return (
+                      <Col lg={6} md={6} className="moive_card">
+                        < MovieBigCard className="Movies-card" movie={movie} />
+                      </Col >
+                    )
+                  })
+                }
             </Row>
-            <Pagination
-              activePage={page}
-              itemsCountPerPage={20}
-              totalItemsCount={700}
-              pageRangeDisplayed={4}
-              prevPageText={"‹"}
-              nextPageText={"›"}
-              onChange={handlePageChange}
-            />
+            <Row>
+              <Col lg={6} md={6}></Col>
+              <Col lg={6} md={6}>
+                <Pagination
+                  activePage={page}
+                  itemsCountPerPage={20}
+                  totalItemsCount={700}
+                  pageRangeDisplayed={3}
+                  prevPageText={"‹"}
+                  nextPageText={"›"}
+                  onChange={handlePageChange}
+                />
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>

@@ -6,7 +6,8 @@ const api = axios.create({
 })
 api.interceptors.request.use(function (config) {
   return config;
-}, function (error) {
+}, 
+function (error) {
   return Promise.reject(error);
 });
 

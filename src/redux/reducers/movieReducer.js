@@ -4,7 +4,6 @@ let initialState = {
     upcomingMovies: {},
     loading:true,
     genreList:[],
-    search:""
 }
 
 function movieReducer(state = initialState, action) {
@@ -22,8 +21,6 @@ function movieReducer(state = initialState, action) {
             }
         case "GET_ERROR":
             return{...state,loading:false}
-        case "SEARCH":
-            return{...state,search:action.payload.keyword,}
         default:
             return{...state}
     }
