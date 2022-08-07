@@ -126,9 +126,10 @@
   display: flex;
   float: left;
 }
+#Detail-every{
+  margin-bottom: 40px;
+}
 .Detail_review{
-  margin-left: 50px;
-  margin-right: 50px;
   border: 3px solid white;
   padding: 30px;
   font-size: 15px;

@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import api from '../redux/api';
 import { Container, Row, Col, Button, Badge, CloseButton } from 'react-bootstrap';
-import { MovieCard2 } from '../components/MovieCard2';
 import YouTube from 'react-youtube';
 import ReactModal from 'react-modal';
 import { useSelector } from 'react-redux';
-
+import { useNavigate } from 'react-router-dom';
 export const MovieDetail = () => {
   const customStyles = {
     content: {
@@ -19,7 +18,7 @@ export const MovieDetail = () => {
       transform: 'translate(-50%, -50%)',
     },
   };
-
+  const navigate = useNavigate()
   const [movieDetails, setMovieDetails] = useState(null);
   const [movieReview, setMovieReview] = useState(null);
   const [movieRelated, setMovieRelated] = useState(null);
@@ -31,11 +30,14 @@ export const MovieDetail = () => {
 
   const [reviewOrRelated, setReviewOrRelated] = useState(true)
   const { genreList } = useSelector((state) => state.movie)
+  const showDetail = () => {
+    navigate(`/movies/${movieRelated.id}`)
+  }
 
 
   const { id } = useParams()
   const API_KEY = process.env.REACT_APP_API_KEY
-  let url = `https://image.tmdb.org/t/p/original///${movieDetails&&movieDetails.poster_path}`
+  let url = `https://image.tmdb.org/t/p/original///${movieDetails && movieDetails.poster_path}`
 
   async function getMovieDetailsFromAPI(id) {
     const movieDetailApi = api.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`)
@@ -50,27 +52,23 @@ export const MovieDetail = () => {
     setMovieReview(movieReview.data)
     setMovieRelated(movieRealated.data)
     setMovieTrailer(movieTrailer.data)
-    
   }
   useEffect(() => {
     getMovieDetailsFromAPI(id);
-    return () => { };
   }, []);
 
   return (
     <div className='app'>
       <Container id='Detail_cover' >
-        <Row >
+        <Row  id="Detail-every">
           <Col lg={5} >
             <Row >
-              <img src={url } />
+              <img src={url} />
             </Row>
           </Col>
           <Col lg={7}>
             <Row>
               <Col >
-                {/* {movieDetails&&movieDetails.genres.id.map(
-                                    (a) => (<Badge id="Movie_Big_Card-badge"bg="danger">{genreList.find(movieDetails => movieDetails.a === a).name}</Badge>))} */}
                 <h2 className='Detail_title'>{movieDetails?.title}</h2>
                 <h2 className='Detail_tagline'>{movieDetails?.tagline}</h2>
                 <span><img className="imdb" src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/575px-IMDB_Logo_2016.svg.png' />{movieDetails?.vote_average.toFixed(1)}</span>
@@ -84,7 +82,7 @@ export const MovieDetail = () => {
                 <Badge className='Detail_badge' bg="danger">Running Time</Badge>{movieDetails?.runtime}min<br /> <hr />
                 <Button variant='dark' onClick={openModal}> Watch Trailer</Button>
 
-                <ReactModal 
+                <ReactModal
                   isOpen={modalIsOpen}
                   onRequestClose={closeModal}
                   style={customStyles}>
@@ -107,36 +105,20 @@ export const MovieDetail = () => {
             </Row>
           </Col>
           <Row >
-            <Col id="Detail_Button">
-              <Button className="Detail_Button1" onClick={() => setReviewOrRelated(true)} variant="outline-danger">REVIEWS </Button>
-              <Button variant="outline-light" onClick={() => setReviewOrRelated(false)}>RELATED MOVIES</Button>
-            </Col>
+
           </Row>
         </Row>
-        {
-          reviewOrRelated == true ?
-            <Row className='Detail_review'>
-              {movieReview?.results.map((review) => {
-                return (
-                  <div>
-                    <h3>{review.author}</h3>
-                    <p>{review.content}</p>
-                  </div>
-                )
-              })}
-            </Row>
-            :
-            
-            <Row  >
-              {movieRelated?.results.map((movie) => {
-                return (
-                  <Col  lg={2} md={3} sm={4} xs={4}>
-                    <MovieCard2   movie={movie} />
-                  </Col>
-                )
-              })}
-            </Row>
-        }
+
+        <Row className='Detail_review'>
+          {movieReview?.results.map((review) => {
+            return (
+              <div>
+                <h3>{review.author}</h3>
+                <p>{review.content}</p>
+              </div>
+            )
+          })}
+        </Row>
       </Container>
     </div>
   )
