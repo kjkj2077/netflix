@@ -1,10 +1,9 @@
 .app{
   background-color: black ;
-  /* font-family: "Montserrat", helvetica, arial, sans-serif; */
   font-family: serif;
   color: white;
   padding-bottom: 20px;
-  
+  z-index : 100;
 }
 .movie-list{
   padding-left: 8px;
@@ -15,6 +14,11 @@
   text-decoration: none;
   margin-right: 20px;
 }
+#nav-title{
+  font-weight: bold;
+  color: red;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 /* nav */
 /* banner */
 .banner{
@@ -24,7 +28,8 @@
   align-items: center; /* 세로정렬 */
   background-size: cover;
   background-position: center;
-  box-shadow: 0px 0px 0.5rem #c80b34;
+  box-shadow: 0px 0px 0.8rem #c80b34;
+  margin-bottom: 10px;
 }
 .banner-info{
   width: 40%;
@@ -34,31 +39,39 @@
 /* banner */
 /* card */
 .card{
-  width: 220px;
-  height: 160px;
-  margin-left: 38px;
-  position: fixed;
-  
+  margin-top: 8px;
+  width: 7.2rem;
+  height: 7rem;
 }
+.card_title{
+  font-size: 1rem;
+}
+
 .card_img{
   border-radius: 20px;
+  box-shadow: 0px 0px 0.7rem #c80b34;
   border: 1px rgb(35, 34, 34) solid;
+  
+}
+.card:hover{
+  transition: all .5s;
 }
 #card-badge{
   margin-right: 3px;
   margin: 20px;
-  border: 3px black solid;
+  border: 3px rgb(55, 53, 53) solid;
   background-color: red;
   color: red;
 }
 .overlay  {
   opacity: 0;
-  background: rgb(66, 64, 64);
+  background: rgb(33, 33, 33);
   width: 100%;
   height: 100%;
   position: absolute;
   padding: 15px;
   border-radius: 20px;
+  box-shadow: 0px 0px 0.8rem #c80b34;
 }
 .card_over_18{
   color: red;
@@ -69,27 +82,12 @@
 /* card */
 
 /* Detail */
-.Detail_Row1{
-  margin-bottom: 100px;
+#Detail_cover{
+  padding-top: 2rem;
 }
-.Detail_img{
-  height: 700px;
-  width: 500px;
-  display: flex;
-  justify-content : center;
 
-  
-  margin-top: 18px;
-  border: 1px rgb(23, 23, 23) solid;
-}
-.Detail_info{
-  margin-right: 50px;
-}
-.Detail{
-  padding-top: 80px;
-}
 .Detail_title{
-  font-size: 60px;
+  font-size: 3.2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -116,12 +114,17 @@
   margin-right: 5px;
   width: 100px;
 }
-.Detail_Button{
-  margin-left: 50px;
+#Detail_Button{
+  margin-top: 20px;
   margin-bottom: 30px;
+  
 }
 .Detail_Button1{
   margin-right: 15px;
+}
+#Re-movie{
+  display: flex;
+  float: left;
 }
 .Detail_review{
   margin-left: 50px;
@@ -147,10 +150,19 @@ hr {
 #movie_container_sort{
   margin-top: 10px;
 }
-/* pagination  */
-.pagination {
-  
+#movies-genre-button{
+  margin: 5px;
+  color: white;
+  box-shadow: 0px 0px 0.6rem #c80b34;
+  background-color: black;
+  border: 0.5px solid grey;
 }
+#movies-genre-button :hover{
+  background-color: rgb(33, 31, 31);
+  color: #010101;
+
+}
+/* pagination  */
 .pagination a {
   box-shadow: 0px 0px 0.5rem #c80b34;
   background-color: #550610;
@@ -180,6 +192,7 @@ hr {
   background-position: center;
   border-radius: 30px;
   box-shadow: 0px 0px 1.3rem #c80b34;
+  margin-top: 18px;
 }
 .Movie_Big_Card_cover{
   width: 300px;
@@ -196,7 +209,7 @@ hr {
   box-shadow: 0px 0px 1.1rem #020202;
 }
 .Movie_Big_Card_title{
-  margin-left: 2px;
+  margin-right: 20px;
   width: 120px;
   white-space: nowrap;
   overflow: hidden;
@@ -231,43 +244,47 @@ hr {
   height: 50px;
   color: white;
   box-shadow: 0px 0px 1.3rem #c80b34;
+  background-color: black;
+}
+#dropdown-button-dark-example2{
+  width: 95%;
+  color: white;
+  box-shadow: 0px 0px 1.3rem #c80b34;
+  background-color: black;
+  border: 0.5px solid grey;
+}
+#dropdown-button-dark-example1 ::after{
+  background-color: black;
+  color: #010101;
 }
 #drop_item{ 
   width: 100%;
+  background-color: #010101;
 }
 #Detail_img{
-  
   display: flex;
   justify-content : center;
 }
+#footer{
+  text-align: center;
+  font-size: 15px;
+  padding-bottom: 40px;
+}
 
 @media (max-width: 730px) {  /* 핸드폰*/
-  .card{ 
-    margin-left: 15px;
-  }
-  .Detail_img{
-    margin-top: 0px;
-    height: 420px;
-    width:300px;
-    text-align: center;
-    
-  }
-  .Detail_info{
-    width: 320px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  .Detail_info{
-    margin-right: 0px;
-  }
-  .Detail{
-    padding-top: 30px;
-  }
+  
   .Movie_Big_Card{
     width: 100%;
   }
+  #youtube{
+    width: 350px;
+    height: 220px;
+  }
   
 }
-@media (max-width: 1200px) { /* 태블릿*/
+@media (max-width: 800px) { /* 태블릿*/
+  .Movie_Big_Card{
+    width: 100%;
+  }
   
 }

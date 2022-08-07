@@ -22,7 +22,7 @@ export const Home = () => {
         <div className='app'>
             {popularMovies.results && <Banner movie={popularMovies.results[0]} />}
             <div className='movie-list'>
-                <h2>Popular Movie</h2>
+                <h2>Top Popular Movie</h2>
                 <MovieSlide movies={popularMovies} />
                 <h2>Top rated Movie</h2>
                 <MovieSlide movies={topRatedMovies} />

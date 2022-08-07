@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Navbar, Container, Form, Button, Nav } from 'react-bootstrap';
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useDispatch, useSelector } from 'react-redux';
-
 export const Navigation = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [keyword, setKeyword] = useState("")
-
+  const [keyword, setKeyword] = useState(" ")
   const clickSearch = (keyword) => {
     navigate(`movies/?q=${keyword}`)
   }
-
+  
   return (
     <Navbar bg="dark" variant='dark' expand="lg">
       <Container fluid>
-        <Navbar.Brand href="/" style={{ color: "red" }}>
-          JJAPFLIX
+        <Navbar.Brand  id="nav-title"href="/" >
+         KOFLIX
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

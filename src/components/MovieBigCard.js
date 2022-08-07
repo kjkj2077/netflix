@@ -7,7 +7,7 @@ export const MovieBigCard = ({ movie }) => {
     const showDetail = () => {
         navigate(`/movies/${movie.id}`)
     }
-    let url = `https://image.tmdb.org/t/p/original///${movie?.poster_path}`
+   
     const url2 = `https://image.tmdb.org/t/p/original///${movie?.poster_path}`
     const { genreList } = useSelector((state) => state.movie)
     return (
@@ -21,12 +21,12 @@ export const MovieBigCard = ({ movie }) => {
                     <div className='Movie_Big_Card_cover'>
                         <div className='Movie_Big_Card_info'>
                         <Row > 
-                            <Col lg={6} sm={6} ><img className='Movie_Big_Card_s_img' src={url2} /></Col>
-                            <Col lg={6} sm={6} ><h3 className='Movie_Big_Card_title' >{movie.title}</h3></Col>
+                            <Col lg={3} xs={3} ><img className='Movie_Big_Card_s_img' src={url2} /></Col>
+                            <Col lg={9} xs={9} ><h3 className='Movie_Big_Card_title' >{movie.title}</h3></Col>
                         </Row>
                         <Row id='Movie_Big_Card-badges'>
                             <Col lg={8}>
-                                {movie.genre_ids.map(
+                                {movie&&movie.genre_ids.map(
                                     (id) => (<Badge id="Movie_Big_Card-badge"bg="danger">{genreList.find(movie => movie.id === id).name}</Badge>))}
                             </Col>
                             <Col lg={4} ></Col>
