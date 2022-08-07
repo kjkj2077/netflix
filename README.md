@@ -1,4 +1,7 @@
 <h1>Netflix</h1>
+
+https://kjkj2077-netflix.netlify.app
+
 <br/><br/>
 <h3>Home</h3>
 <img src ="public/home.png"/>
