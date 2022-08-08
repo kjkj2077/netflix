@@ -11,6 +11,13 @@ export const Navigation = () => {
   const clickSearch = (keyword) => {
       navigate(`movies/?q=${keyword}`)
   }
+  const handle =()=>{
+    navigate(`movies/?q=${keyword}`)
+  }
+
+    
+    
+  
 
 
   return (
@@ -37,7 +44,7 @@ export const Navigation = () => {
               aria-label="Search"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
-              
+              onKeyPress={handle }         
             />
             <Button variant="outline-danger" onClick={() => clickSearch(keyword)} >
               <FontAwesomeIcon icon={faSearch} className='search-icon' />
