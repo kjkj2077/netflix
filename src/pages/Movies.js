@@ -8,7 +8,7 @@ import { MovieBigCard } from '../components/MovieBigCard';
 import { useSearchParams } from 'react-router-dom';
 import { searchAction } from '../redux/actions/searchAction';
 import { useDispatch } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+
 const API_KEY = process.env.REACT_APP_API_KEY
 export const Movies = () => {
   const { keyword } = useSelector((state) => state.search)
@@ -19,20 +19,20 @@ export const Movies = () => {
   const [genre, setGenre] = useState(null)
   const dispatch = useDispatch()
   const { genreList } = useSelector((state) => state.movie)
+  
 
   const handlePageChange = (page) => { setPage(page); };
   const getSearch = () => {
     let searchQuery = query.get("q") || "";
     dispatch(searchAction.search(searchQuery))
+    
   }
   useEffect(() => {
     getMovieDetailsFromAPI(page, keyword, genre)
     getSearch()
-    console.log("gen",genreList)
   }, [page, sortType, keyword, query, genre]);
 
   async function getMovieDetailsFromAPI(page, keyword, genre) {
-    
       if (keyword == null || keyword == '') {
         if (genre == null || genre == '') {
           let url3 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sortType}&include_adult=true&include_video=false&page=${page}`
@@ -109,7 +109,7 @@ export const Movies = () => {
           </Col>
         </Row>
       </Container>
-      <Outlet />
+     
     </div>
   )
 }

@@ -7,15 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const Navigation = () => {
   const navigate = useNavigate();
   const [keyword, setKeyword] = useState(" ")
+
   const clickSearch = (keyword) => {
-    navigate(`movies/?q=${keyword}`)
+      navigate(`movies/?q=${keyword}`)
   }
-  
+
+
   return (
     <Navbar bg="dark" variant='dark' expand="lg">
       <Container fluid>
-        <Navbar.Brand  id="nav-title"href="/" >
-         KOFLIX
+        <Navbar.Brand id="nav-title" href="/" >
+          KOFLIX
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -33,7 +35,9 @@ export const Navigation = () => {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
+              
             />
             <Button variant="outline-danger" onClick={() => clickSearch(keyword)} >
               <FontAwesomeIcon icon={faSearch} className='search-icon' />

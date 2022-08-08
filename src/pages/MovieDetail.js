@@ -105,10 +105,10 @@ export const MovieDetail = () => {
             </Row>
           </Col>
           <Row >
-
+          
           </Row>
         </Row>
-
+                  <h1>Reviews</h1>
         <Row className='Detail_review'>
           {movieReview?.results.map((review) => {
             return (
